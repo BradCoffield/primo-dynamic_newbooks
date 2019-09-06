@@ -36,13 +36,7 @@ $.getJSON(
     console.log(ourRandoms);
 
     // TODO: I'm working here to grab the book cover image url so I can append it into the iterating class
-  
 
-
-
-
-
-    
     class RmcNewBooks {
       constructor(theBookStuff) {
         this.theBookStuff = theBookStuff;
@@ -53,43 +47,55 @@ $.getJSON(
       }
     }
     //${jsonContents[ourRandoms[i]].pnx.display.title}
-
+    function bookCoverGrab(input) {
+      $.getJSON(
+        `https://books.google.com/books?bibkeys=ISBN:${input}&jscmd=viewapi&callback=?`,
+        function(data) {
+          if (data[`ISBN:${input}`].thumbnail_url) {
+            console.log(data[`ISBN:${input}`].thumbnail_url);
+            return data[`ISBN:${input}`].thumbnail_url;
+            // console.log(val, ";;;;;");
+          } else {
+            console.log("hh");
+            return null;
+            // console.log(val, "%%%%");
+          }
+          return val;
+        }
+      );
+    }
     for (i = 0; i < ourRandoms.length; i++) {
-      function bookCoverGrab(input){
-        $.getJSON(
-          `https://books.google.com/books?bibkeys=ISBN:${input}&jscmd=viewapi&callback=?`,
-          function(data) {console.log(data);return "jo"}
-        );
-      }
       var theBookStuff = `
-        ${bookCoverGrab(jsonContents[0].pnx.search.isbn[0])}
-        <li class="new-books-li">
+      <li class="new-books-li">
         <div class="content">
         ${jsonContents[ourRandoms[i]].pnx.search.isbn[0]}
-            <a href="https://rocky-primo.hosted.exlibrisgroup.com/permalink/f/1j18u99/${jsonContents[ourRandoms[i]].pnx.control.sourceid}${jsonContents[ourRandoms[i]].pnx.control.sourcerecordid}"
+            <a href="https://rocky-primo.hosted.exlibrisgroup.com/permalink/f/1j18u99/${
+              jsonContents[ourRandoms[i]].pnx.control.sourceid
+            }${jsonContents[ourRandoms[i]].pnx.control.sourcerecordid}"
                 target="_blank">
                 <div class="content-overlay"></div>
-                <img class="content-image book-cover" src="https://m.media-amazon.com/images/I/51q1Ql-G61L._AC_UL436_.jpg">
+                <img class="content-image book-cover" src="${
+                  bookCoverGrab(jsonContents[ourRandoms[i]].pnx.search.isbn[0])
+                }">
                 <div class="content-details fadeIn-bottom">
-                    <div class="content-title">${jsonContents[ourRandoms[i]].pnx.display.title}
+                    <div class="content-title">${
+                      jsonContents[ourRandoms[i]].pnx.display.title
+                    }
                     </div>
-                    <p class="content-text">${jsonContents[ourRandoms[i]].pnx.display.creator} <br><i class="fas fa-external-link-alt"></i></p>
+                    <p class="content-text">${
+                      jsonContents[ourRandoms[i]].pnx.display.creator
+                    } <br><i class="fas fa-external-link-alt"></i></p>
                 </div>
             </a>
         </div>
     </li>
-        
-        
-        
-        `;
+           `;
 
       var ttttt = new RmcNewBooks(theBookStuff);
       ttttt.getToAppending();
     }
   }
 );
-
-
 
 // function testingISBN(input) {
 //   if (
@@ -147,5 +153,3 @@ $.getJSON(
 //     //just leave it off*/
 //   }
 // }
-
-
