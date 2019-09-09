@@ -1,3 +1,91 @@
-body {
-    background: teal;
+#new-books-1 .book-cover {
+    box-shadow: 0px 0px 2px darkgray;
+}
+#new-books-1 .new-books-li {
+    box-shadow: 1px 1px 3px lightgray;
+    padding: 1rem;
+}
+#new-books-1 ul li {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+#new-books-1 .book-cover {
+    max-width: 145px;
+    max-height: 215px;
+}
+/* #new-books-1 ul li img {
+    max-width: 145px;
+    max-height: 215px;
+} */
+.content {
+    position: relative;
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
+}
+.content .content-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    height: 99%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    -moz-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+}
+.content:hover .content-overlay {
+    opacity: 1;
+}
+.content-image {
+    width: 100%;
+}
+.content-details {
+  
+    position: absolute;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+.content:hover .content-details {
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+}
+.content-details {
+    font-family: "Roboto Condensed", sans-serif;
+}
+.content-details .content-title {
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding: 5px;
+}
+.content-text .fa-external-link-alt {
+    font-size: 2.1rem;
+}
+.content-details p {
+    color: #fff;
+    font-size: 1.2rem;
+}
+.fadeIn-bottom {
+    top: 80%;
+}
+p.content-text {
+    margin-bottom: 1px;
 }
