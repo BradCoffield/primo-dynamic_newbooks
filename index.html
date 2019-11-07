@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>NEWBOOKSEH</title>
-   <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <h1>New Books Dynamic Display</h1>
     <div id="new-books-1">
-    <img src="https://www.rocky.edu/sites/default/files/preloader1_0.gif" alt="" id="library-preloader">
-        <ul id="new-books">
-       
-    </ul>
-</div>
+      <img
+        src="https://www.rocky.edu/sites/default/files/preloader1_0.gif"
+        alt=""
+        id="library-preloader"
+      />
+      <ul id="new-books"></ul>
+    </div>
+    <script>
+      function checkThisPic(id) {
+        // console.log(id);
+        let selectah = document.getElementById(id)
+        if (selectah.naturalWidth < 50) {
+          console.log("bad!", id);
+          selectah.style.display="none"
+        }
+        if (selectah.naturalWidth > 50) {
+          console.log("good!!", id);
+        }
+      }
+    </script>
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
     <!-- <script src="/newbooksdynamism.js"></script> -->
     <!-- <script src="/APIs4-jquery-jnewbooksdynamism.js"></script> -->
-    <script src="/APIs4-jquery-primo-newbooks-display.js"></script>
-</body>
+    <!-- <script src="/APIs4-jquery-primo-newbooks-display.js"></script> -->
+    <script src="/newbooks-withoutjquery.js"></script>
+  </body>
 </html>
