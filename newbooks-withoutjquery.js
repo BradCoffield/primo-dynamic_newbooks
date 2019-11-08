@@ -50,8 +50,8 @@ let newBooksDynamism = (function(howManyWeWant) {
       let theCatalogLink = `<a href="https://rocky-primo.hosted.exlibrisgroup.com/permalink/f/1j18u99/${input.docs[randos[i]].pnx.control.sourceid}${input.docs[randos[i]].pnx.control.sourcerecordid}"
                target="_blank">`;
 
-      let syndetics = ` https://syndetics.com/index.aspx?isbn=${theIsbn}/MC.JPG&client=primo`;
-      //  content-image book-cover
+      let syndetics = `https://syndetics.com/index.aspx?isbn=${theIsbn}/MC.JPG&client=primo`;
+     
       addToDom(syndetics, theTitle, theCatalogLink);
     }
     const loaderr = document.getElementById("library-preloader");
