@@ -6,18 +6,20 @@
 
 let newBooksDynamism2 = (function(howManyWeWant) {
   let totalDisplayed = 0;
-
-  //   let bookAppender = function(item) {
-  //     // console.log(item);
-  //     let theIsbn = item.search.isbn[0];
-  //     let theTitle = item.display.title;
-  //     let catalogLink = `<a href="https://rocky-primo.hosted.exlibrisgroup.com/permalink/f/1j18u99/${item.control.sourceid}${item.control.sourcerecordid}"
-  //                target="_blank">`;
-  //     let theIMG = `https://syndetics.com/index.aspx?isbn=${theIsbn}/MC.JPG&client=primo`;
-
-  //     console.log(catalogLink);
-  //     totalDisplayed++;
-  //   };
+ 
+  function checkThisBook(num) {
+    //   console.log("sup",num);
+    let selectah = document.getElementById(`cover${num}`);
+    let selectah2 = document.getElementById(`new-books-li-${num}`)
+    if (selectah.naturalWidth < 50) {
+    //   console.log("bad!", `cover${num}`);
+      selectah2.style.display = "none";
+    }
+    if (selectah.naturalWidth > 50) {
+    //   console.log("good!!", `cover${num}`);
+      totalDisplayed++
+    }
+  }
 
   //Getting a list of books with the subject newbooks limit=150 is one hundred and fifty results to work with.
   let url =
@@ -63,7 +65,7 @@ let newBooksDynamism2 = (function(howManyWeWant) {
       let baseDom = document.getElementById("new-books-div");
       baseDom.insertAdjacentHTML("beforeend", "<ul id='new-books'>hi</ul>");
       let nextDom = document.getElementById("new-books");
-      nextDom.style.display = "none";
+    //   nextDom.style.display = "none";
 
       for (let i = 0; totalDisplayed < howManyWeWant; i++) {
         let theIsbn =
@@ -75,11 +77,12 @@ let newBooksDynamism2 = (function(howManyWeWant) {
 
         let syndetics = `https://syndetics.com/index.aspx?isbn=${theIsbn}/MC.JPG&client=primo`;
 
-        addToDom(syndetics, theTitle, theCatalogLink);
+        addToDom(syndetics, theTitle, theCatalogLink, i);
       }
     });
-  function addToDom(theIMG, theTitle, catalogLink) {
+  function addToDom(theIMG, theTitle, catalogLink,i) {
     if (totalDisplayed < howManyWeWant) {
+   
       class RmcNewBooks {
         constructor(theBookStuff) {
           this.theBookStuff = theBookStuff;
@@ -87,12 +90,14 @@ let newBooksDynamism2 = (function(howManyWeWant) {
         getToAppending() {
           var domsn = document.getElementById("new-books");
           domsn.insertAdjacentHTML("beforeend", this.theBookStuff);
-          totalDisplayed++;
+          checkThisBook(i);
+         
+          //   totalDisplayed++;
         }
       }
-      i = 0;
+      
       var theBookStuff = `
-         <li class="new-books-li">
+         <li class="new-books-li" id="new-books-li-${i}">
            <div class="content">
             
                ${catalogLink}
@@ -109,7 +114,7 @@ let newBooksDynamism2 = (function(howManyWeWant) {
 
       var ttttt = new RmcNewBooks(theBookStuff);
       ttttt.getToAppending();
-      i++;
+     
     }
     // if(totalDisplayed = howManyWeWant){checkThosePics()}
     // checkThosePics();
