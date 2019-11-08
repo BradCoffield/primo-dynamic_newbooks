@@ -1,0 +1,19 @@
+{
+  "name": "primo-dynamic_newbooks",
+  "version": "1.0.0",
+  "description": "Working to automagically display selections from our new books, with book cover images, utilizing the Primo API and whatever else.",
+  "main": "APIs4-jquery-primo-newbooks-display.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BradCoffield/primo-dynamic_newbooks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BradCoffield/primo-dynamic_newbooks/issues"
+  },
+  "homepage": "https://github.com/BradCoffield/primo-dynamic_newbooks#readme"
+}
