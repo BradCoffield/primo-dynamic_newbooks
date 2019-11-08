@@ -1,23 +1,17 @@
-//get all the results from primo as before
-//create the ul that all the books will go onto and display none it
-//take like 50 randomized results (can i just randomize 1-100?)
-//FOR EACH ONE - append, check the pic, if no good remove, if good ++ counter and move on.
-//maybe create a uniqued id for the top level of the book thing in addition to the image to make for easy removal
-
 let newBooksDynamism2 = (function(howManyWeWant) {
   let totalDisplayed = 0;
- 
+
   function checkThisBook(num) {
     //   console.log("sup",num);
     let selectah = document.getElementById(`cover${num}`);
-    let selectah2 = document.getElementById(`new-books-li-${num}`)
+    let selectah2 = document.getElementById(`new-books-li-${num}`);
     if (selectah.naturalWidth < 50) {
-    //   console.log("bad!", `cover${num}`);
+      //   console.log("bad!", `cover${num}`);
       selectah2.style.display = "none";
     }
     if (selectah.naturalWidth > 50) {
-    //   console.log("good!!", `cover${num}`);
-      totalDisplayed++
+      //   console.log("good!!", `cover${num}`);
+      totalDisplayed++;
     }
   }
 
@@ -56,8 +50,8 @@ let newBooksDynamism2 = (function(howManyWeWant) {
       //This is where we actually specify how many random numbers we want generated. This is likely different than the number of books we want to display. We need at least a few more than we want displayed because sometimes there isn't a book cover and that item won't be displayed.
       var ourRandoms = getRandomNumbers(50, jsonResponseLength);
       // console.log(ourRandoms);
-        console.log(theResults);
-      return { theResults, ourRandoms }
+      console.log(theResults);
+      return { theResults, ourRandoms };
       //   bookCoverGrab(result, ourRandoms); //call a function with the full results from the API call and our random numbers.
     })
     .then(results => {
@@ -65,9 +59,9 @@ let newBooksDynamism2 = (function(howManyWeWant) {
       let baseDom = document.getElementById("new-books-div");
       baseDom.insertAdjacentHTML("beforeend", "<ul id='new-books'>hi</ul>");
       let nextDom = document.getElementById("new-books");
-    //   nextDom.style.display = "none";
-
-      for (let i = 0; totalDisplayed < howManyWeWant; i++) {
+      //   nextDom.style.display = "none";
+let i=0;
+      for (i; totalDisplayed < howManyWeWant; i++) {
         let theIsbn =
           results.theResults.docs[results.ourRandoms[i]].pnx.search.isbn[0];
         let theTitle =
@@ -80,9 +74,8 @@ let newBooksDynamism2 = (function(howManyWeWant) {
         addToDom(syndetics, theTitle, theCatalogLink, i);
       }
     });
-  function addToDom(theIMG, theTitle, catalogLink,i) {
+  function addToDom(theIMG, theTitle, catalogLink, i) {
     if (totalDisplayed < howManyWeWant) {
-   
       class RmcNewBooks {
         constructor(theBookStuff) {
           this.theBookStuff = theBookStuff;
@@ -91,11 +84,11 @@ let newBooksDynamism2 = (function(howManyWeWant) {
           var domsn = document.getElementById("new-books");
           domsn.insertAdjacentHTML("beforeend", this.theBookStuff);
           checkThisBook(i);
-         
+
           //   totalDisplayed++;
         }
       }
-      
+
       var theBookStuff = `
          <li class="new-books-li" id="new-books-li-${i}">
            <div class="content">
@@ -114,7 +107,6 @@ let newBooksDynamism2 = (function(howManyWeWant) {
 
       var ttttt = new RmcNewBooks(theBookStuff);
       ttttt.getToAppending();
-     
     }
     // if(totalDisplayed = howManyWeWant){checkThosePics()}
     // checkThosePics();
