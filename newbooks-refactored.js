@@ -56,8 +56,8 @@ let newBooksDynamism2 = (function(howManyWeWant) {
       //This is where we actually specify how many random numbers we want generated. This is likely different than the number of books we want to display. We need at least a few more than we want displayed because sometimes there isn't a book cover and that item won't be displayed.
       var ourRandoms = getRandomNumbers(50, jsonResponseLength);
       // console.log(ourRandoms);
-      //   console.log(theResults);
-      return { theResults, ourRandoms };
+        console.log(theResults);
+      return { theResults, ourRandoms }
       //   bookCoverGrab(result, ourRandoms); //call a function with the full results from the API call and our random numbers.
     })
     .then(results => {
