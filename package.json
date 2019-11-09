@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BradCoffield/primo-dynamic_newbooks/issues"
   },
-  "homepage": "https://github.com/BradCoffield/primo-dynamic_newbooks#readme"
+  "homepage": "https://github.com/BradCoffield/primo-dynamic_newbooks#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
 }
