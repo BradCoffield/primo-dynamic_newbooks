@@ -4,3 +4,4 @@ _site/
 .jekyll-metadata
 eh.js
 node_modules/
+googleemulatorkey.json
