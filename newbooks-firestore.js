@@ -26,6 +26,9 @@ let newBooksFirestore = function(howManyWeWant){
         console.log('Document data:', doc.data().results);
 
 const rawData = doc.data().results;
+// rawData.forEach((p) => {
+//  console.log(p.isbn[0]);
+// })
 
     const getRandomNumbers = function(howMany, upperLimit) {
         var limit = howMany,
@@ -57,7 +60,7 @@ const rawData = doc.data().results;
         let i = 0;
         for (i; totalDisplayed < howManyWeWant; i++) {
           // console.log(results.rawData[results.ourRandoms[i]].pnx.search);
-          if (results.rawData[results.ourRandoms[i]].isbn[0] != undefined) {
+          if (results.rawData[results.ourRandoms[i]].isbn[0]) {
             let theIsbn =
               results.rawData[results.ourRandoms[i]].isbn[0];
             let theTitle =
@@ -97,7 +100,7 @@ const rawData = doc.data().results;
                 
                    ${catalogLink}
                        <div class="content-overlay"></div>
-                       <img class="content-image book-cover" id="cover${i}" src="${theIMG}" onload="checkThisPic(this.id)">
+                       <img class="content-image book-cover" id="cover${i}" src="${theIMG}"  >
                        <div class="content-details fadeIn-bottom">
                            <div class="content-title">${theTitle}
                             
