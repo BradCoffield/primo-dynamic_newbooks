@@ -1,4 +1,4 @@
-let newBooksFirestore = function(howManyWeWant){
+const newBooksFirestore = function(howManyWeWant){
     let totalDisplayed = 0;
 
     function checkThisBook(num) {
@@ -48,36 +48,43 @@ const rawData = doc.data().results;
         return unique_random_numbers;
       };
      
-      var ourRandoms = getRandomNumbers(50, rawData.length);
-      return { rawData, ourRandoms };
-    
+      var ourRandoms = getRandomNumbers(50, 100);
+      doThings(rawData, ourRandoms)
+    // I think I need to change this to a function call with the data instead of a return...idk
     }
-    }).then(function(results){
-        let baseDom = document.getElementById("new-books-div");
-        baseDom.insertAdjacentHTML("beforeend", "<ul id='new-books'>hi</ul>");
-        let nextDom = document.getElementById("new-books");
-        //   nextDom.style.display = "none";
-        let i = 0;
-        for (i; totalDisplayed < howManyWeWant; i++) {
-          // console.log(results.rawData[results.ourRandoms[i]].pnx.search);
-          if (results.rawData[results.ourRandoms[i]].isbn[0]) {
-            let theIsbn =
-              results.rawData[results.ourRandoms[i]].isbn[0];
-            let theTitle =
-              results.rawData[results.ourRandoms[i]].title;
-              let theCatalogLink = `<a href="https://rocky-primo.hosted.exlibrisgroup.com/permalink/f/1j18u99/${ results.rawData[results.ourRandoms[i]].sourceid[0]}${ results.rawData[results.ourRandoms[i]].sourcerecordid[0]}"
-              target="_blank">`;
- 
-            let syndetics = `https://syndetics.com/index.aspx?isbn=${theIsbn}/MC.JPG&client=primo`;
-  
-            addToDom(syndetics, theTitle, theCatalogLink, i);
-          }
-          else console.log('snatch!');
-        }
-    })
+    })/* .then(function(results){
+       
+    }) */
     .catch(err => {
       console.log('Error getting document', err);
+      runTheShit()
     });
+
+
+function doThings(results, randoms){
+  let baseDom = document.getElementById("new-books-div");
+  baseDom.insertAdjacentHTML("beforeend", "<ul id='new-books'>hi</ul>");
+  let nextDom = document.getElementById("new-books");
+  //   nextDom.style.display = "none";
+  let i = 0;
+  for (i; totalDisplayed < howManyWeWant; i++) {
+    // console.log(results.rawData[results.ourRandoms[i]].pnx.search);
+    
+      let theIsbn =
+        results[randoms[i]].isbn[0];
+      let theTitle =
+        results[randoms[i]].title;
+        let theCatalogLink = `<a href="https://rocky-primo.hosted.exlibrisgroup.com/permalink/f/1j18u99/${ results[randoms[i]].sourceid[0]}${ results[randoms[i]].sourcerecordid[0]}"
+        target="_blank">`;
+
+      let syndetics = `https://syndetics.com/index.aspx?isbn=${theIsbn}/MC.JPG&client=primo`;
+
+      addToDom(syndetics, theTitle, theCatalogLink, i);
+    }
+    
+}
+
+
 
     function addToDom(theIMG, theTitle, catalogLink, i) {
         if (totalDisplayed < howManyWeWant) {
@@ -120,10 +127,13 @@ const rawData = doc.data().results;
 
 
   
-}(7)
+}
+function runTheShit(){
+  newBooksFirestore(7)
+}
 
 
-
+runTheShit()
 
 
 
