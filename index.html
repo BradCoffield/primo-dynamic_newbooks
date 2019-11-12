@@ -7,24 +7,24 @@
     <title>NEWBOOKSEH</title>
     <link rel="stylesheet" href="/style.css" />
     <style>
-    html {background: gray}
+      html {
+        background: gray;
+      }
     </style>
   </head>
   <body>
     <h1>New Books Dynamic Display</h1>
     <div id="new-books-1">
-     
-   
-      <div>
-        <div class="triple-spinner" id="library-preloader"></div>
-      </div>
-     
       <!-- <img
         src="https://www.rocky.edu/sites/default/files/preloader1_0.gif"
         alt=""
         id="library-preloader"
       /> -->
-      <div id="new-books-div"></div>
+      <div id="new-books-div">
+        <div>
+          <div class="triple-spinner" id="library-preloader"></div>
+        </div>
+      </div>
     </div>
     <!-- <script>
       function checkThisPic(id) {
@@ -47,7 +47,6 @@
     <!-- <script src="/newbooks-refactored.js"></script> -->
     <!-- <script src="/primo-keyword-books.js"></script> -->
 
- 
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -64,23 +63,18 @@
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-firestore.js"></script>
+    <script></script>
     <script>
-    
-    </script>
-    <script>
-    
       firebase.initializeApp({
-        apiKey: 'AIzaSyCDKrRaEVvKwz-TXwz2qnwov8yGXuP35Jk',
-        authDomain: 'rmc-library-data.firebaseapp.com',
-        projectId: 'rmc-library-data'
-      });  
-      
+        apiKey: "AIzaSyCDKrRaEVvKwz-TXwz2qnwov8yGXuP35Jk",
+        authDomain: "rmc-library-data.firebaseapp.com",
+        projectId: "rmc-library-data"
+      });
+
       const db = firebase.firestore();
-      const settings = {timestampsInSnapshots: true };
+      const settings = { timestampsInSnapshots: true };
       db.settings(settings);
-      </script>
-      
-     
+    </script>
 
     <script src="/newbooks-firestore.js"></script>
   </body>

@@ -119,11 +119,12 @@ const newBooksFirestore = function(howManyWeWant) {
   }
 };
 function runTheShit() {
-  newBooksFirestore(7);
+  newBooksFirestore(2);
   let nextDom = document.getElementById("new-books");
   nextDom.remove()
-  // TODO: I need to hide/show the ul as planned
-  // need run the shit to have an if (ul is on dom) remove it.
-}
+  totalShitRuns++
 
-runTheShit();
+}
+let maxShitRuns = 10;
+let totalShitRuns = 0;
+if (totalShitRuns<maxShitRuns){runTheShit()}
