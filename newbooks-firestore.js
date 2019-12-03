@@ -1,4 +1,4 @@
-const newBooksFirestore = function(howManyWeWant) {
+const newBooksFirestoreWrap = function(){const newBooksFirestore = function(howManyWeWant) {
   let totalDisplayed = 0;
   
   function checkThisBook(num) {
@@ -15,7 +15,7 @@ const newBooksFirestore = function(howManyWeWant) {
     }
   }
 
-  db.collection("primo-searches")
+  db.collection("primo-book-searches")
     .doc("new-books")
     .get()
     .then(doc => {
@@ -53,7 +53,7 @@ const newBooksFirestore = function(howManyWeWant) {
     })
     .catch(err => {
       console.log("Error getting document", err);
-      runTheShit();
+      runThestuff();
     });
 
   function doThings(results, randoms) {
@@ -118,13 +118,14 @@ const newBooksFirestore = function(howManyWeWant) {
     }
   }
 };
-function runTheShit() {
-  newBooksFirestore(2);
+function runThestuff() {
+  newBooksFirestore(7);
   let nextDom = document.getElementById("new-books");
   nextDom.remove()
-  totalShitRuns++
+  totalstuffRuns++
 
 }
-let maxShitRuns = 10;
-let totalShitRuns = 0;
-if (totalShitRuns<maxShitRuns){runTheShit()}
+let maxstuffRuns = 10;
+let totalstuffRuns = 0;
+if (totalstuffRuns<maxstuffRuns){runThestuff()}
+}()
