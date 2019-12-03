@@ -57,7 +57,7 @@ const newBooksFirestoreWrap = function(){const newBooksFirestore = function(howM
     });
 
   function doThings(results, randoms) {
-    let baseDom = document.getElementById("new-books-div");
+    let baseDom = document.getElementById("new-books-1");
     baseDom.insertAdjacentHTML("beforeend", "<ul id='new-books'></ul>");
     let nextDom = document.getElementById("new-books");
       nextDom.style.display = "none";
