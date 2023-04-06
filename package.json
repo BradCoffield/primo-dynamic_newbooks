@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/BradCoffield/primo-dynamic_newbooks#readme",
   "dependencies": {
-    "firebase-admin": "^8.7.0",
+    "firebase-admin": "^11.5.0",
     "firebase-functions": "^3.3.0",
     "node-fetch": "^2.6.0"
   }
