@@ -21,14 +21,12 @@
 
   const initializeDomForBooks = () => {
     let baseDom = document.getElementById("new-books-display-wrapper");
-    baseDom.insertAdjacentHTML("beforeend", "<ul id='new-books'></ul>");
+    baseDom.insertAdjacentHTML("afterbegin", "<ul id='new-books'></ul>");
     // let nextDom = document.getElementById("new-books");
     // nextDom.style.display = "none";
   };
   const appendToDom = (itemData, number) => {
     var domsn = document.getElementById("new-books");
-
-
 
     var forDisplay = `
                <li class="new-books-li" id="new-books-li-${number}">
@@ -43,7 +41,7 @@
                  </div> 
              </li>`;
 
-    domsn.insertAdjacentHTML("beforeend", forDisplay);
+    domsn.insertAdjacentHTML("afterbegin", forDisplay);
   };
 
   const sanityQuery = `*[_type == "newBooks"]`;
@@ -59,7 +57,8 @@
   const ourRandoms = getRandomNumbers(5, newBooksData.length);
   initializeDomForBooks();
   ourRandoms.forEach((rando) => {
-    console.log(newBooksData[rando].title);
     appendToDom(newBooksData[rando], rando);
   });
+  let preloader = document.getElementById("library-preloader");
+  preloader.style.display = "none";
 })();
